@@ -1,10 +1,10 @@
 package proyectoFinal;
 import java.util.ArrayList;
+
 public class Fase {
     private int numero;
     private ArrayList<Ronda> rondas;
-
-    public Fase(){
+    public Fase() {
         rondas = new ArrayList<>();
     }
 
@@ -15,6 +15,7 @@ public class Fase {
     public void addRonda(Ronda ronda){
         rondas.add(ronda);
     }
+
     public Ronda getRonda(int i){
         return this.rondas.get(i);
     }

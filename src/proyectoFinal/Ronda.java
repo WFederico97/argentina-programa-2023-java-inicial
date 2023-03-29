@@ -17,7 +17,7 @@ public class Ronda {
             this.partidos.add(partido);
     }
     public Partido getPartido(int i) {
-            return this.partidos.get(1) ;
+            return this.partidos.get(i) ;
     }
 
     public ArrayList<Partido> getPartidos() {

@@ -1,7 +1,7 @@
 package proyectoFinal;
 import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class Torneo {
@@ -29,7 +29,9 @@ public class Torneo {
             String golesVisita = cell[3];
             String visitante = cell[4];
 
+
             if (numeroRonda.equals(String.valueOf(ronda.getNum()))){
+
 
                 Equipo equipoLocal = new Equipo (local);
                 Equipo equipoVisitante = new Equipo(visitante);
@@ -44,18 +46,18 @@ public class Torneo {
                 fase.addRonda(ronda);
 
                 ronda = new Ronda(Integer.parseInt(numeroRonda));
-                Partido partido = new Partido(
-                        new Equipo(cell[1]), new Equipo(cell[4]),
-                        Integer.parseInt(cell[2]),Integer.parseInt(cell[3])
-                );
-
-
+                Equipo equipoLocal = new Equipo(cell[1]);
+                Equipo equipoVisitante = new Equipo(cell[4]);
+                Partido partido = new Partido(equipoLocal, equipoVisitante,
+                        Integer.parseInt(cell[2]), Integer.parseInt(cell[3]));
 
                 ronda.addPartido(partido);
             }
+
         }
-        System.out.println(ronda.getNum() + " " + ronda.getPartidos());
-        fase.addRonda(ronda);
+        if (!scanner.hasNext()){
+            fase.addRonda(ronda);
+        }
     }
     private static void GenerarPronosticos (Fase fase, Participantes participantes) throws IOException {
         String file = "src/proyectoFinal/partidos.csv";
@@ -113,28 +115,30 @@ public class Torneo {
         return null;
     }
     private static ResultadoEnum Res(String[] data){
-        if (data[2].equals("x") || data[3].equals("x")){
+        if (data[2].equals("x") || data[3].equals("x") ) {
             return ResultadoEnum.ganador;
         }
         return ResultadoEnum.empate;
     }
     private static  void TablaPosiciones(Participantes participantes){
         System.out.println("///TABLA DE POSICIONES///");
-        String[] posiciones = new String[participantes.getPersonas().size()];
-        int aux = 0;
-        for (int i = 0; i < participantes.getPersonas().size(); i++){
-            int max  = 0;
-            for (int j = 0; j < participantes.getPersonas().size(); j++){
-                int puntos = participantes.getPersona(j).getPuntos();
-                if (max < puntos){
-                    max = puntos;
-                    aux = j;
-                }
+
+        List<Persona> personas = participantes.getPersonas();
+
+        ///Hago un sorting del array de participantes para ordenarlo de manera decreciente
+        Collections.sort(personas, new Comparator<Persona>() {
+            @Override
+            public int compare(Persona p1, Persona p2) {
+                return p2.getPuntos() - p1.getPuntos(); // descending order
             }
-            System.out.println(i + 1 + " )" + participantes.getPersona(aux).getNombre() + " [ " + participantes.getPersona(aux).getPuntos() + " ]"  );
-            participantes.getPersona(aux).setPuntos(0);
-            posiciones[i] = participantes.getPersona(aux).getNombre();
+        });
+        for (int i = 0; i < personas.size(); i++) {
+            Persona persona = personas.get(i);
+            System.out.println("(" + (i + 1) + ") " + persona.getNombre() + " [" + persona.getPuntos() + "]");
         }
+
+
+
     }
 }
 

@@ -24,12 +24,11 @@ public class Partido {
             }
 
         }
-        if (equipo.equals(equipo2)){
-            if (golesEquipo1 > golesEquipo2){
-                resultado = ResultadoEnum.ganador;
-            } else {
+        if (equipo.equals(equipo2)) {
+            if (golesEquipo1 > golesEquipo2)
                 resultado = ResultadoEnum.perdedor;
-            }
+            } else {
+                resultado = ResultadoEnum.ganador;
         }
         return resultado;
     }
@@ -42,6 +41,6 @@ public class Partido {
 
     @Override
     public String toString() {
-        return this.equipo1.getNombre() + ") " + this.golesEquipo1 + " - " + this.golesEquipo2 + " (" + this.equipo2.getNombre();
+        return "(" +this.equipo1.getNombre() + ") " + this.golesEquipo1 + " - " + this.golesEquipo2 + " (" + this.equipo2.getNombre() + ")";
     }
 }
