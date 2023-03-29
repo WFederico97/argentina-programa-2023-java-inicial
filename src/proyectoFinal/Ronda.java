@@ -1,18 +1,29 @@
 package proyectoFinal;
 
+import java.util.ArrayList;
+
 public class Ronda {
         private int num;
-        private Partido[] partidos;
-        public Ronda(int espacio){
-            this.partidos = new Partido[espacio];
+        private ArrayList<Partido> partidos;
+        public Ronda(int num){
+            this.num = num;
+            this.partidos = new ArrayList<>();
         }
 
-        public void setPartido(int i, Partido partido) {
-            partidos[i] = partido;
-        }
+    public int getNum() {
+        return this.num;
+    }
+    public void addPartido(Partido partido){
+            this.partidos.add(partido);
+    }
+    public Partido getPartido(int i) {
+            return this.partidos.get(1) ;
+    }
 
-        public Partido getPartido(int i) {
-            return partidos[i] ;
-        }
-
+    public ArrayList<Partido> getPartidos() {
+        return partidos;
+    }
+    public int getSize(){
+            return this.partidos.size();
+    }
 }

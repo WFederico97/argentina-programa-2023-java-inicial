@@ -1,6 +1,17 @@
-Equipo1,Gana1,Empate,Gana2,Equipo2
-Huracan,x,"","",San Lorenzo
-Boca Jrs,"","",x,River Plate
-Independiente,x,""," ",Racing Club
-Estudiantes,x,""," ",Gimnasia
-Newells,x,""," ",Rosario Central
+Fede,Huracan,x,"",San Lorenzo
+Fede,Boca Jrs,"",x,River Plate
+Cristina,Independiente,x," ",Racing Club
+Cristina,Estudiantes,x," ",Gimnasia
+Fede,Newells,x," ",Rosario Central
+Fede,argentina,x,,panama
+Fede,curazao,,x,argentina
+lorenzo,argentina,,,francia
+lorenzo,croacia,,x,argentina
+lorenzo,argentina,,,paises bajos
+lorenzo,australia,,x,argentina
+facundo,argentina,,x,panama
+facundo,curazao,x,,argentina
+facundo,argentina,,,francia
+Fede,croacia,x,,argentina
+Fede,argentina,,,paises bajos
+Fede,australia,x,,argentina
