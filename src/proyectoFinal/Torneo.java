@@ -19,15 +19,30 @@ public class Torneo {
         scanner.useDelimiter(",");
         Ronda ronda = new Ronda(1);
 
+
         while (scanner.hasNext()){
+
 
             String line = scanner.nextLine();
             String[] cell = line.split(",");
+            ///script para verificar si el array tiene la cantidad de espacios correctos
+            if (cell.length != 5){
+                continue;
+            }
+
             String numeroRonda = cell[0];
             String local = cell[1];
             String golesLocal = cell[2];
             String golesVisita = cell[3];
             String visitante = cell[4];
+
+            ///Script para verificar que el valor de Goles sean enteros
+            try {
+                int golesLocalInt = Integer.parseInt(golesLocal);
+                int golesVisitanteInt = Integer.parseInt(golesVisita);
+            } catch (NumberFormatException e){
+                System.out.println("Algo salió mal ..." + "Revisar si los valores de goles son enteros");
+            }
 
 
             if (numeroRonda.equals(String.valueOf(ronda.getNum()))){
